@@ -1,0 +1,14 @@
+﻿using ExpenseTracker.Entities.DTOs.Request;
+using ExpenseTracker.Entities.DTOs.Response;
+
+namespace ExpenseTracker.Services.Intefaces
+{
+    public interface IExpenseService
+    {
+        List<ExpenseResponseDto> GetAllExpenses();
+        ExpenseResponseDto? GetExpenseById(int id);
+        ExpenseResponseDto CreateExpense(CreateExpenseDto entity);
+        ExpenseResponseDto? UpdateExpense(int id, CreateExpenseDto entity);
+        bool DeleteExpense(int id);
+    }
+}
