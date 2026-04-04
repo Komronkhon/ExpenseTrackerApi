@@ -5,7 +5,7 @@ namespace ExpenseTracker.Entities.DTOs.Response
 {
     public class ExpenseResponseDto
     {
-        public string Id { get; set; }
+        public long Id { get; set; }
         public string Title { get; set; } = string.Empty;
         public decimal Amount { get; set; }
         public int CategoryId { get; set; }

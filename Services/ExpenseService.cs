@@ -35,6 +35,24 @@ namespace ExpenseTracker.Services
             return _mapper.Map<ExpenseResponseDto>(expense);
         }
 
+        public List<ExpenseResponseDto> GetMonthlyExpenses(int userId)
+        {
+            var expenses = _expenseRepository.GetAll()
+                .Where(x => x.UserId == userId &&
+                       x.CreatedAt.Month == DateTime.UtcNow.Month &&
+                       x.CreatedAt.Year == DateTime.UtcNow.Year)
+                .ToList();
+
+            return _mapper.Map<List<ExpenseResponseDto>>(expenses);
+        }
+
+        public decimal GetTotalByCategory(int categoryId)
+        {
+            return _expenseRepository.GetAll()
+                .Where(x => x.CategoryId == categoryId)
+                .Sum(x => x.Amount);
+        }
+
         public ExpenseResponseDto CreateExpense(CreateExpenseDto entity)
         {
             var expense = _mapper.Map<Expense>(entity);

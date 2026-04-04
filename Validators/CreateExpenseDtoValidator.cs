@@ -9,7 +9,7 @@ namespace ExpenseTracker.Validators
         {
             RuleFor(e => e.Title)
                 .NotEmpty()
-                .Length(100);
+                .MaximumLength(100);
 
             RuleFor(e => e.Amount)
                 .NotNull()

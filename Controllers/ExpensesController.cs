@@ -1,4 +1,5 @@
 ﻿using ExpenseTracker.Entities.DTOs.Request;
+using ExpenseTracker.Services;
 using ExpenseTracker.Services.Intefaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,6 +33,14 @@ namespace ExpenseTracker.Controllers
                 return NotFound();
 
             return Ok(expense);
+        }
+
+        [HttpGet("total-amount/{categoryId}")]
+        public IActionResult GetTotalByCategory(int categoryId)
+        {
+            var total = _service.GetTotalByCategory(categoryId);
+
+            return Ok(total);
         }
 
         [HttpPost]

@@ -10,7 +10,7 @@ namespace ExpenseTracker.Validators
         {
             RuleFor(c => c.Name)
                 .NotEmpty()
-                .Length(100);
+                .MaximumLength(100);
         }
     }
 }

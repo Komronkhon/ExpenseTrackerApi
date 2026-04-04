@@ -19,12 +19,10 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
     .CreateLogger();    
 
-//builder.Services.AddAutoMapper(cfg => cfg.AddProfile<MappingProfiles>());
+builder.Services.AddAutoMapper(cfg => cfg.AddProfile<MappingProfiles>());
 
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
-
-builder.Services.AddTransient<MappingProfiles>();
 
 builder.Services.AddSingleton<IExpenseRepository, ExpenseRepository>();
 builder.Services.AddSingleton<ICategoryRepository, CategoryRepository>();
@@ -45,13 +43,13 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapScalarApiReference();
 
-app.UseMiddleware<ExceptionMiddleware>();
 
 app.MapControllers();
 
