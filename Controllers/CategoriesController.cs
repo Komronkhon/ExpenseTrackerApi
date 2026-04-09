@@ -8,12 +8,12 @@ namespace ExpenseTracker.Controllers
     [Route("api/[controller]")]
     public class CategoriesController : ControllerBase
     {
-        private readonly ICategoryService _service;
+        private readonly ICategoryService _categoryService;
         private readonly ILogger<CategoriesController> _logger;
 
-        public CategoriesController(ICategoryService service, ILogger<CategoriesController> logger)
+        public CategoriesController(ICategoryService categoryService, ILogger<CategoriesController> logger)
         {
-            _service = service;
+            _categoryService = categoryService;
             _logger = logger;
         }
 
@@ -21,7 +21,7 @@ namespace ExpenseTracker.Controllers
         public IActionResult GetAll()
         {
             _logger.LogInformation("Get all categories"); 
-            var categories = _service.GetAllCategories(); 
+            var categories = _categoryService.GetAll(); 
 
             return Ok(categories);
         }
@@ -30,7 +30,7 @@ namespace ExpenseTracker.Controllers
         public IActionResult GetById(int id)
         {
             _logger.LogInformation($"Get category by id: {id}");
-            var category = _service.GetCategoryById(id);
+            var category = _categoryService.GetById(id);
 
             if (category == null)
             {
@@ -45,14 +45,14 @@ namespace ExpenseTracker.Controllers
         public IActionResult Create(CreateCategoryDto entity)
         {
             _logger.LogInformation("Create new category");
-            return Ok(_service.CreateCategory(entity));
+            return Ok(_categoryService.Create(entity));
         }
 
         [HttpPut("{id}")]
         public IActionResult Update(int id, CreateCategoryDto entity)
         {
             _logger.LogInformation($"Update category by id: {id}");
-            var category = _service.UpdateCategory(id, entity);
+            var category = _categoryService.Update(id, entity);
 
             if (category == null)
             {
@@ -67,7 +67,7 @@ namespace ExpenseTracker.Controllers
         public IActionResult Delete(int id)
         {
             _logger.LogInformation($"Delete category by id: {id}");
-            var category = _service.DeleteCategory(id);
+            var category = _categoryService.Delete(id);
 
             if (!category)
             {

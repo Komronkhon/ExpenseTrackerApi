@@ -7,7 +7,7 @@ namespace ExpenseTracker.Repositories.Intetfaces
         List<T> GetAll();
         T? GetById(long id);
         T Create(T entity);
-        T Update(T source, T target);
+        T Update(int id, T target);
         void Delete(T entity);
     }
 }

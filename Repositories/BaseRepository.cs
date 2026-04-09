@@ -25,7 +25,7 @@ namespace ExpenseTracker.Repositories
             return entity;
         }
 
-        public virtual T Update(T source, T target)
+        public virtual T Update(int id, T target)
         {
             throw new NotImplementedException();
         }

@@ -1,15 +1,8 @@
 ﻿using ExpenseTracker.Entities.DTOs.Request;
 using ExpenseTracker.Entities.DTOs.Response;
-using ExpenseTracker.Entities.Models;
+using ExpenseTracker.Services.Intefaces;
 
-namespace ExpenseTracker.Services.Intefaces
+public interface ICategoryService
+    : IBaseService<CategoryResponseDto, CreateCategoryDto>
 {
-    public interface ICategoryService
-    {
-        List<CategoryResponseDto> GetAllCategories();
-        CategoryResponseDto? GetCategoryById(int id);
-        CategoryResponseDto CreateCategory(CreateCategoryDto entity);
-        CategoryResponseDto? UpdateCategory(int id, CreateCategoryDto entity);
-        bool DeleteCategory(int id);
-    }
 }

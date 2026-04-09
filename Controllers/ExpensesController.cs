@@ -9,17 +9,17 @@ namespace ExpenseTracker.Controllers
     [Route("api/[controller]")]
     public class ExpensesController : ControllerBase
     {
-        private readonly IExpenseService _service;
+        private readonly IExpenseService _expenseService;
 
-        public ExpensesController(IExpenseService service)
+        public ExpensesController(IExpenseService expenseService)
         {
-            _service = service;
+            _expenseService = expenseService;
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            var expenses = _service.GetAllExpenses();
+            var expenses = _expenseService.GetAll();
 
             return Ok(expenses);
         }
@@ -27,7 +27,7 @@ namespace ExpenseTracker.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var expense = _service.GetExpenseById(id);
+            var expense = _expenseService.GetById(id);
 
             if (expense == null)
                 return NotFound();
@@ -38,7 +38,7 @@ namespace ExpenseTracker.Controllers
         [HttpGet("total-amount/{categoryId}")]
         public IActionResult GetTotalByCategory(int categoryId)
         {
-            var total = _service.GetTotalByCategory(categoryId);
+            var total = _expenseService.GetTotalByCategory(categoryId);
 
             return Ok(total);
         }
@@ -46,7 +46,7 @@ namespace ExpenseTracker.Controllers
         [HttpPost]
         public IActionResult Create( CreateExpenseDto entity)
         {
-            var expense = _service.CreateExpense(entity);
+            var expense = _expenseService.Create(entity);
 
             return Ok(expense);
         }
@@ -54,7 +54,7 @@ namespace ExpenseTracker.Controllers
         [HttpPut("{id}")]
         public IActionResult Update(int id, CreateExpenseDto entity)
         {
-            var expense = _service.UpdateExpense(id, entity);
+            var expense = _expenseService.Update(id, entity);
 
             if (expense == null)
                 return NotFound();
@@ -65,7 +65,7 @@ namespace ExpenseTracker.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var expense = _service.DeleteExpense(id);
+            var expense = _expenseService.Delete(id);
 
             if (!expense)
                 return NotFound();
