@@ -1,4 +1,5 @@
 using AutoMapper;
+using ExpenseTracker.Data;
 using ExpenseTracker.Mappers;
 using ExpenseTracker.Repositories;
 using ExpenseTracker.Repositories.Intetfaces;
@@ -6,11 +7,18 @@ using ExpenseTracker.Services;
 using ExpenseTracker.Services.Intefaces;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using Serilog;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+       options.UseSqlServer(
+               builder.Configuration.GetConnectionString("DefaultConnection")
+           )
+       );
 
 Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
@@ -24,8 +32,8 @@ builder.Services.AddAutoMapper(cfg => cfg.AddProfile<MappingProfiles>());
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
-builder.Services.AddSingleton<IExpenseRepository, ExpenseRepository>();
-builder.Services.AddSingleton<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IExpenseService, ExpenseService>();

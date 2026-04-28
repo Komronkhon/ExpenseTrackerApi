@@ -18,19 +18,19 @@ namespace ExpenseTracker.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
             _logger.LogInformation("Get all categories"); 
-            var categories = _categoryService.GetAll(); 
+            var categories = await _categoryService.GetAll(); 
 
             return Ok(categories);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             _logger.LogInformation($"Get category by id: {id}");
-            var category = _categoryService.GetById(id);
+            var category = await _categoryService.GetById(id);
 
             if (category == null)
             {
@@ -49,10 +49,10 @@ namespace ExpenseTracker.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, CreateCategoryDto entity)
+        public async Task<IActionResult> Update(int id, CreateCategoryDto entity)
         {
             _logger.LogInformation($"Update category by id: {id}");
-            var category = _categoryService.Update(id, entity);
+            var category = await _categoryService.Update(id, entity);
 
             if (category == null)
             {
@@ -64,10 +64,10 @@ namespace ExpenseTracker.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             _logger.LogInformation($"Delete category by id: {id}");
-            var category = _categoryService.Delete(id);
+            var category = await _categoryService.Delete(id);
 
             if (!category)
             {

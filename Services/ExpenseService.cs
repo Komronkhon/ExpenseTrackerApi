@@ -17,9 +17,9 @@ namespace ExpenseTracker.Services
             _expenseRepository = expenseRepository;
         }
 
-        public List<ExpenseResponseDto> GetMonthlyExpenses(int userId)
+        public async Task<List<ExpenseResponseDto>> GetMonthlyExpenses(int userId)
         {
-            var expenses = _expenseRepository.GetAll()
+            var expenses = (await _expenseRepository.GetAll())
                 .Where(x => x.UserId == userId &&
                             x.CreatedAt.Month == DateTime.UtcNow.Month &&
                             x.CreatedAt.Year == DateTime.UtcNow.Year)
@@ -28,9 +28,11 @@ namespace ExpenseTracker.Services
             return _mapper.Map<List<ExpenseResponseDto>>(expenses);
         }
 
-        public decimal GetTotalByCategory(int categoryId)
+        public async Task<decimal> GetTotalByCategory(int categoryId)
         {
-            return _expenseRepository.GetAll()
+            var expenses = await _expenseRepository.GetAll();
+
+            return expenses
                 .Where(x => x.CategoryId == categoryId)
                 .Sum(x => x.Amount);
         }

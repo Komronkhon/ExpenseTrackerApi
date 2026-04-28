@@ -6,7 +6,8 @@ namespace ExpenseTracker.Services.Intefaces
     public interface IExpenseService 
         : IBaseService<ExpenseResponseDto, CreateExpenseDto>
     {
-        List<ExpenseResponseDto> GetMonthlyExpenses(int userId);
-        decimal GetTotalByCategory(int categoryId);
+        Task<List<ExpenseResponseDto>> GetMonthlyExpenses(int userId);
+
+        Task<decimal> GetTotalByCategory(int categoryId);
     }
 }

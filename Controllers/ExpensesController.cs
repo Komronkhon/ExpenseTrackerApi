@@ -63,9 +63,9 @@ namespace ExpenseTracker.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var expense = _expenseService.Delete(id);
+            var expense = await _expenseService.Delete(id);
 
             if (!expense)
                 return NotFound();
