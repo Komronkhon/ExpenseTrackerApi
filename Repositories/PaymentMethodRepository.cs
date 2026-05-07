@@ -1,12 +1,13 @@
 ﻿using ExpenseTracker.Data;
 using ExpenseTracker.Entities.Models;
 using ExpenseTracker.Repositories.Interfaces;
+using System.Xml.Linq;
 
 namespace ExpenseTracker.Repositories
 {
-    public class ExpenseRepository : BaseRepository<Expense>, IExpenseRepository
+    public class PaymentMethodRepository : BaseRepository<PaymentMethod>, IPaymentMethodRepository
     {
-        public ExpenseRepository(AppDbContext context)
+        public PaymentMethodRepository(AppDbContext context)
             : base(context)
         {
         }

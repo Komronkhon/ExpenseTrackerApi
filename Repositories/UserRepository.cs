@@ -4,9 +4,9 @@ using ExpenseTracker.Repositories.Interfaces;
 
 namespace ExpenseTracker.Repositories
 {
-    public class ExpenseRepository : BaseRepository<Expense>, IExpenseRepository
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
-        public ExpenseRepository(AppDbContext context)
+        public UserRepository(AppDbContext context)
             : base(context)
         {
         }

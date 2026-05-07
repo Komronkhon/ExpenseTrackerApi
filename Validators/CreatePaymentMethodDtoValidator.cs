@@ -3,11 +3,12 @@ using FluentValidation;
 
 namespace ExpenseTracker.Validators
 {
-    public class CreateCategoryDtoValidator : AbstractValidator<CreateCategoryDto>
+    public class CreatePaymentMethodDtoValidator
+        : AbstractValidator<CreatePaymentMethodDto>
     {
-        public CreateCategoryDtoValidator()
+        public CreatePaymentMethodDtoValidator()
         {
-            RuleFor(c => c.Name)
+            RuleFor(p => p.Name)
                 .NotEmpty()
                 .MaximumLength(100);
         }

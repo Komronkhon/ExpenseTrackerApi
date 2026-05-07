@@ -2,8 +2,8 @@
 using ExpenseTracker.Entities.DTOs.Request;
 using ExpenseTracker.Entities.DTOs.Response;
 using ExpenseTracker.Entities.Models;
-using ExpenseTracker.Repositories.Intetfaces;
-using ExpenseTracker.Services.Intefaces;
+using ExpenseTracker.Repositories.Interfaces;
+using ExpenseTracker.Services.Interfaces;
 
 namespace ExpenseTracker.Services
 {

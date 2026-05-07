@@ -1,6 +1,5 @@
 ﻿using ExpenseTracker.Entities.DTOs.Request;
-using ExpenseTracker.Services;
-using ExpenseTracker.Services.Intefaces;
+using ExpenseTracker.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExpenseTracker.Controllers

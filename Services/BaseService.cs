@@ -2,8 +2,8 @@
 {
     using AutoMapper;
     using ExpenseTracker.Entities.Models;
-    using ExpenseTracker.Repositories.Intetfaces;
-    using ExpenseTracker.Services.Intefaces;
+    using ExpenseTracker.Repositories.Interfaces;
+    using ExpenseTracker.Services.Interfaces;
 
     public class BaseService<TEntity, TResponse, TCreateDto> : IBaseService<TResponse, TCreateDto>
         where TEntity : BaseEntity

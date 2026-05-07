@@ -15,8 +15,8 @@ namespace ExpenseTracker.Validators
                 .NotNull()
                 .GreaterThan(0);
 
-            RuleFor(e => e.PaymentMethod)
-                .IsInEnum();
+            RuleFor(e => e.PaymentMethodId)
+                .GreaterThan(0);
 
             RuleFor(e => e.CategoryId)
                 .NotNull()
@@ -24,7 +24,8 @@ namespace ExpenseTracker.Validators
 
             RuleFor(e => e.UserId)
                 .NotNull()
-                .GreaterThan(0);    
+                .GreaterThan(0);
+
         }
     }
 }

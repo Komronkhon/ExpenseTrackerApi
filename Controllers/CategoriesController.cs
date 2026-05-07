@@ -1,5 +1,5 @@
 ﻿using ExpenseTracker.Entities.DTOs.Request;
-using ExpenseTracker.Services.Intefaces;
+using ExpenseTracker.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExpenseTracker.Controllers
@@ -42,10 +42,10 @@ namespace ExpenseTracker.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CreateCategoryDto entity)
+        public async Task<IActionResult> Create(CreateCategoryDto entity)
         {
             _logger.LogInformation("Create new category");
-            return Ok(_categoryService.Create(entity));
+            return Ok(await _categoryService.Create(entity));
         }
 
         [HttpPut("{id}")]

@@ -2,9 +2,9 @@ using AutoMapper;
 using ExpenseTracker.Data;
 using ExpenseTracker.Mappers;
 using ExpenseTracker.Repositories;
-using ExpenseTracker.Repositories.Intetfaces;
+using ExpenseTracker.Repositories.Interfaces;
 using ExpenseTracker.Services;
-using ExpenseTracker.Services.Intefaces;
+using ExpenseTracker.Services.Interfaces;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
@@ -34,9 +34,17 @@ builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
+builder.Services.AddScoped<IPaymentMethodRepository, PaymentMethodRepository>();
+builder.Services.AddScoped<IReportRepository, ReportRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IIncomeRepository, IncomeRepository>();
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IExpenseService, ExpenseService>();
+builder.Services.AddScoped<IPaymentMethodService, PaymentMethodService>();
+builder.Services.AddScoped<IReportService, ReportService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IIncomeService, IncomeService>();
 
 // Add services to the container.s
 builder.Services.AddControllers();

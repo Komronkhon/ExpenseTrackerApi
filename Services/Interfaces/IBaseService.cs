@@ -1,4 +1,4 @@
-﻿namespace ExpenseTracker.Services.Intefaces
+﻿namespace ExpenseTracker.Services.Interfaces
 {
     public interface IBaseService<TResponse, TCreateDto>
     {

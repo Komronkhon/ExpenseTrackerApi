@@ -14,6 +14,18 @@ namespace ExpenseTracker.Mappers
 
             CreateMap<CreateExpenseDto, Expense>();
             CreateMap<Expense, ExpenseResponseDto>();
+
+            CreateMap<CreatePaymentMethodDto, PaymentMethod>();
+            CreateMap<PaymentMethod, PaymentMethodResponseDto>();
+                
+            CreateMap<CreateReportDto, Report>();
+            CreateMap<Report, ReportResponseDto>();
+                
+            CreateMap<CreateUserDto, User>();
+            CreateMap<User, UserResponseDto>();
+                
+            CreateMap<CreateIncomeDto, Income>();
+            CreateMap<Income, IncomeResponseDto>();
         }
     }
 }

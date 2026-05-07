@@ -1,7 +1,7 @@
 ﻿
 using ExpenseTracker.Entities.Models;
 
-namespace ExpenseTracker.Repositories.Intetfaces
+namespace ExpenseTracker.Repositories.Interfaces
 {
     public interface IExpenseRepository : IBaseRepository<Expense>
     { }

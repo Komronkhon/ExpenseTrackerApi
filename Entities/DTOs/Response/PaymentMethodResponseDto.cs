@@ -1,6 +1,6 @@
 ﻿namespace ExpenseTracker.Entities.DTOs.Response
 {
-    public class CategoryResponseDto
+    public class PaymentMethodResponseDto
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;

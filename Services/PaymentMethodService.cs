@@ -6,14 +6,13 @@ using ExpenseTracker.Repositories.Interfaces;
 using ExpenseTracker.Services;
 using ExpenseTracker.Services.Interfaces;
 
-public class CategoryService
-    : BaseService<Category, CategoryResponseDto, CreateCategoryDto>,
-      ICategoryService
+public class PaymentMethodService
+    : BaseService<PaymentMethod, PaymentMethodResponseDto, CreatePaymentMethodDto>,
+      IPaymentMethodService
 {
-    public CategoryService(
-        ICategoryRepository repository,
+    public PaymentMethodService(
+        IPaymentMethodRepository repository,
         IMapper mapper
     ) : base(repository, mapper)
-    {
-    }
+    { }
 }
